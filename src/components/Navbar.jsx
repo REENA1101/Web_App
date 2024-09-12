@@ -20,6 +20,7 @@ const Navbar = () => {
                     <img src={searchImg} alt="search" width={18} height={18} />
                     <img src={bagImg} alt="bag" width={18} height={18}/>
             </div>
+            <h1></h1>
         </nav>
     </header>
   )
