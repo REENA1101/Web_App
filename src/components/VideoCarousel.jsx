@@ -1,9 +1,21 @@
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import React from "react"
+import { hightlightsSlides } from "../constants"
 
 const VideoCarousel = () => {
   return (
-    <div>VideoCarousel</div>
+    <>
+      <div className="flex items-center">
+        {hightlightsSlides.map((list, i)=>(
+            <div key={list.id} id="slider">
+                <div className="video-carousel_container">
+                    Test
+                </div>
+            </div>
+        ))}
+      </div>
+    </>
   )
 }
 
