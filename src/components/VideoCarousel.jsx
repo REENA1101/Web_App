@@ -7,9 +7,9 @@ const VideoCarousel = () => {
     <>
       <div className="flex items-center">
         {hightlightsSlides.map((list, i)=>(
-            <div key={list.id} id="slider">
+            <div key={list.id} id="slider" className="sm:pr-20 pr-10">
                 <div className="video-carousel_container">
-                    Test
+                    <div className="w-full h-full flex-center rounded-3xl overflow-hidden bg-black"></div>
                 </div>
             </div>
         ))}
