@@ -15,7 +15,7 @@ body {
   height: 100%;
   background: #000;
   border-color: #3b3b3b;
-  /* user-select: none; */
+  user-select: none;
 }
 
 canvas {
@@ -23,10 +23,10 @@ canvas {
 }
 
 .screen-max-width {
-  margin-inline-start: auto;
+  margin-inline-start: 0;
   margin-inline-end: 0;
   position: relative;
-  max-width: 1120px;
+  max-width: 1280px;
 }
 
 @layer utilities {
