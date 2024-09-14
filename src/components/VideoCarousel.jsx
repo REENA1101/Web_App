@@ -3,6 +3,8 @@ import gsap from "gsap"
 import { hightlightsSlides } from "../constants"
 import { useRef, useState } from "react"
 import { useEffect } from "react"
+import { playImg, replayImg } from "../utils"
+import { useGSAP } from "@gsap/react"
 
 const VideoCarousel = () => {
    const videoRef = useRef([]);
@@ -20,6 +22,22 @@ const VideoCarousel = () => {
    const [loadedData, setLoadedData] = useState([]);
 
    const {isEnd, isLastVideo, startPlay, videoId, isPlaying} = video;
+
+   useGSAP(()=>{
+       gsap.to('#video', {
+        scrollTrigger:{
+            trigger:'#video',
+            toggleActions: 'restart none none none'
+        },
+        onComplete:()=>{
+            setVideo((pre)=>({
+                ...pre, 
+                startPlay:true,
+                isPlaying:true,
+            }))
+        }
+       })
+   }, [isEnd, videoId])
 
    useEffect(()=>{
     if(loadedData.length > 3){
@@ -39,17 +57,37 @@ const VideoCarousel = () => {
         if(span[videoId]){
             //animate the progress of the video
             let anim = gsap.to(span[videoId], {
-               onUpdate:()=>{
+               onUpdate: ()=>{
 
                },
 
                onComplete:()=>{
-                
+
                }
             })
         }
 
    }, [videoId, startPlay])
+
+   const handlProcess = (type, i) => {
+    switch (type) {
+        case 'video-end':
+            setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }));
+            break;
+        case 'video-last':
+            setVideo((pre) => ({ ...pre, isLastVideo: true }));
+            break;
+        case 'video-reset':
+            setVideo((pre) => ({ ...pre, isLastVideo: false, videoId: 0 }));
+            break;
+        case 'play':
+            setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+            break;
+        default:
+            break;
+    }
+};
+
 
   return (
     <>
@@ -96,12 +134,20 @@ const VideoCarousel = () => {
                 )}
                 className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
                 >
-                    <span className="absolute h-full w-full rounded-full ref={(el)=>(videoSpanRef.current[i]=el)}"/>
+                    <span className="absolute h-full w-full rounded-full" ref={(el)=>(videoSpanRef.current[i]=el)}/>
                 </span>
             ))}
-            
         </div>
 
+        <button className="control-btn">
+            <img 
+            src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg} 
+            alt={isLastVideo ? 'replay' : !isPlaying? 'play' : 'pause'} 
+            onClick={isLastVideo 
+            ? () => handlProcess('video-reset'): !isPlaying
+             ? ()=>handlProcess('play')
+             : ()=>handlProcess('pause') }/>
+        </button>
       </div>
     </>
   )
