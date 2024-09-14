@@ -1,5 +1,4 @@
 import gsap from "gsap"
-// import { useGSAP } from "@gsap/react"
 import { hightlightsSlides } from "../constants"
 import { useRef, useState } from "react"
 import { useEffect } from "react"
@@ -31,7 +30,7 @@ const VideoCarousel = () => {
         },
         onComplete:()=>{
             setVideo((pre)=>({
-                ...pre, 
+                ...pre,
                 startPlay:true,
                 isPlaying:true,
             }))
