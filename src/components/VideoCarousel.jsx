@@ -2,7 +2,7 @@ import gsap from "gsap"
 import { hightlightsSlides } from "../constants"
 import { useRef, useState } from "react"
 import { useEffect } from "react"
-import { playImg, replayImg } from "../utils"
+import { playImg, replayImg,pauseImg } from "../utils"
 import { useGSAP } from "@gsap/react"
 
 const VideoCarousel = () => {
@@ -49,6 +49,9 @@ const VideoCarousel = () => {
 
    }, [startPlay, videoId, isPlaying, loadedData])
 
+   const handleLoadedMetaData = (i,e)=>setLoadedData
+   ((pre)=>[...pre, e])
+
    useEffect(()=>{
         const currentProgress = 0;
         let span = videoSpanRef.current;
@@ -68,7 +71,7 @@ const VideoCarousel = () => {
 
    }, [videoId, startPlay])
 
-   const handlProcess = (type, i) => {
+   const handleProcess = (type, i) => {
     switch (type) {
         case 'video-end':
             setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }));
@@ -106,6 +109,7 @@ const VideoCarousel = () => {
                                 ...prevVideo, isPlaying:true
                             }))
                         }}
+                        onLoadedMetadata={(e)=>handleLoadedMetaData(i,e)}
                         >
                             <source src={list.video} type="video/mp4"/>
                         </video>
@@ -143,9 +147,9 @@ const VideoCarousel = () => {
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg} 
             alt={isLastVideo ? 'replay' : !isPlaying? 'play' : 'pause'} 
             onClick={isLastVideo 
-            ? () => handlProcess('video-reset'): !isPlaying
-             ? ()=>handlProcess('play')
-             : ()=>handlProcess('pause') }/>
+            ? () => handleProcess('video-reset'): !isPlaying
+             ? ()=>handleProcess('play')
+             : ()=>handleProcess('pause') }/>
         </button>
       </div>
     </>
