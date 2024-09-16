@@ -40,17 +40,15 @@ const VideoCarousel = () => {
 
    useEffect(()=>{
     if(loadedData.length > 3){
-        if(isPlaying){
+        if(!isPlaying){
             videoRef.current[videoId].pause();
         }else{
             startPlay && videoRef.current[videoId].play();
         }
     }
-
    }, [startPlay, videoId, isPlaying, loadedData])
 
-   const handleLoadedMetaData = (i,e)=>setLoadedData
-   ((pre)=>[...pre, e])
+   const handleLoadedMetadata = (i,e)=>setLoadedData((pre)=>[...pre, e])
 
    useEffect(()=>{
         const currentProgress = 0;
@@ -86,7 +84,7 @@ const VideoCarousel = () => {
             setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
             break;
         default:
-            break;
+           return video;
     }
 };
 
@@ -109,7 +107,7 @@ const VideoCarousel = () => {
                                 ...prevVideo, isPlaying:true
                             }))
                         }}
-                        onLoadedMetadata={(e)=>handleLoadedMetaData(i,e)}
+                        onLoadedMetadata={(e)=>handleLoadedMetadata(i,e)}
                         >
                             <source src={list.video} type="video/mp4"/>
                         </video>
