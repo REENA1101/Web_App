@@ -58,13 +58,42 @@ const VideoCarousel = () => {
             //animate the progress of the video
             let anim = gsap.to(span[videoId], {
                onUpdate: ()=>{
+                    const progress = Math.ceil(anim.progress()* 100);
 
+                    if(progress != currentProgress){
+                        currentProgress = progress;
+                    
+
+                   gsap.to(videoDivRef.current[videoId], {
+                    width:window.innerWidth < 760
+                    ? '10vw'
+                    : window.innerWidth< 1200
+                    ?'10vw'
+                    :"4vw"
+                   })
+
+                   gsap.to(span[videoId], {
+                    width:`${currentProgress}%`,
+                    backgroundColor: 'white'
+                   })
+                 }
                },
 
                onComplete:()=>{
-
+                  if(isPlaying){
+                    gsap.to(videoDivRef.current[videoId], {
+                        width:'12px'
+                    })
+                    gsap.to(span[videoId],{
+                        backgroundColor: '#afafaf'
+                    })
+                  }
                }
             })
+
+            if(videoId===0){
+                
+            }
         }
 
    }, [videoId, startPlay])
