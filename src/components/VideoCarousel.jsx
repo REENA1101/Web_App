@@ -209,6 +209,10 @@ useEffect(() => {
                         playsInline={true}
                         preload="auto"
                         muted
+                        className={`${
+                            list.id===2 && 'translate-x-44'}
+                            pointer-events-none
+                        `}
                         ref={(el)=>(videoRef.current[i]=el)}
 
                         onEnded={()=>
@@ -260,7 +264,7 @@ useEffect(() => {
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg} 
             alt={isLastVideo ? 'replay' : !isPlaying? 'play' : 'pause'} 
             onClick={isLastVideo 
-            ? () => handleProcess('video-reset'): !isPlaying
+             ? () => handleProcess('video-reset'): !isPlaying
              ? ()=>handleProcess('play')
              : ()=>handleProcess('pause') }/>
         </button>
