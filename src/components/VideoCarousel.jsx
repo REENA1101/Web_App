@@ -20,7 +20,7 @@ const VideoCarousel = () => {
 
    const [loadedData, setLoadedData] = useState([]);
 
-   const {isEnd, isLastVideo, startPlay, videoId, isPlaying} = video;
+   const {isEnd, isLastVideo, startPlay, videoId, isPlaying} = video
 
    useGSAP(()=>{
     gsap.to('#slider', {
