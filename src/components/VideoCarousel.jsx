@@ -4,6 +4,10 @@ import { useRef, useState } from "react"
 import { useEffect } from "react"
 import { playImg, replayImg,pauseImg } from "../utils"
 import { useGSAP } from "@gsap/react"
+import ScrollTrigger from "gsap/ScrollTrigger"; 
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const VideoCarousel = () => {
    const videoRef = useRef([]);
@@ -160,8 +164,14 @@ useEffect(() => {
         }
 
         const animUpdate = () => {
-            anim.progress(videoRef.current[videoId].currentTime / hightlightsSlides[videoId].videoDuration);
+            const videoElement = videoRef.current[videoId];
+            const slide = hightlightsSlides[videoId];
+            if (videoElement && slide) {
+                const progressValue = videoElement.currentTime / slide.videoDuration;
+                anim.progress(progressValue);
+            }
         };
+        
 
         if (isPlaying) {
             gsap.ticker.add(animUpdate);
