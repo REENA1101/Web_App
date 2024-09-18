@@ -138,7 +138,7 @@ useEffect(() => {
                     });
 
                     gsap.to(span[videoId], {
-                        width: `${currentProgress}%`,
+                        width:`${currentProgress}%`,
                         backgroundColor: 'white',
                     });
                 }
@@ -186,6 +186,9 @@ useEffect(() => {
             setVideo((pre) => ({ ...pre, isLastVideo: false, videoId: 0 }));
             break;
         case 'play':
+            setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+            break;
+        case 'pause':
             setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
             break;
         default:
