@@ -41,7 +41,7 @@ export default function Model() {
             <h1 id="heading" className='section-heading'>
               Take a closer look.
             </h1>
-        </div>
+        
 
         <div className='flex flex-col items-center mt-5'>
             <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
@@ -64,7 +64,7 @@ export default function Model() {
                 item = {model}
                 size = {size}
                 />
-                
+
                 <Canvas className='w-full h-full'
                     style={{
                         position:'fixed',
@@ -74,13 +74,25 @@ export default function Model() {
                         right:0,
                         overflow:'hidden'
                     }}
+
+                    eventSource={document.getElementById('root')}
                 >
                     <View.Port/>
                 </Canvas>
             </div>
 
-        </div>
+            <div className='mx-auto w-full'>
+                <p className='text-sm font-light text-center mb-5'>{model.title}</p>
 
+                <div className='flex-center'>
+                    <ul className='color-container'>
+
+                        
+                    </ul>
+                </div>
+           </div>
+          </div>
+        </div>
     </section>
   )
 }
