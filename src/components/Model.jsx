@@ -1,7 +1,19 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { useState } from 'react';
+import { yellowImg } from '../utils';
 
 export default function Model() {
+    const [size, setSize] = useState('small')
+    const [model, setmodel] = useState({
+        title: 'iPhone 15 Pro in natural Titanium',
+        color: ['#8F8A81', '#FFE7B9', '6F6C64'],
+        img:yellowImg,
+    })
+
+    // camera control for the model view
+
+
    useGSAP(()=>{
     gsap.to('#heading', {y:0, opacity:1})
    }, []);
