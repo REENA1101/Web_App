@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { yellowImg } from '../utils';
 import { useRef } from 'react';
 import * as THREE from 'three';
+import ModelView from './ModelView';
 
 export default function Model() {
     const [size, setSize] = useState('small')
@@ -17,7 +18,13 @@ export default function Model() {
     const cameraControlSmall = useRef();
     const cameraControlLarge = useRef();
 
+    // model
     const small = useRef(new THREE.Group());
+    const large = useRef(new THREE.Group());
+
+    // rotation
+    const [smallRotation, setSmallRotation] = useState(0);
+    const [largeRotation, setLargeRotation] = useState(0);
 
 
 
@@ -36,7 +43,16 @@ export default function Model() {
 
         <div className='flex flex-col items-center mt-5'>
             <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
-
+                <ModelView
+                index={1}
+                groupRef = {small}
+                gsapType= 'view1'
+                controlRef = {cameraControlSmall}
+                setRotationState = {setSmallRotation}
+                item = {model}
+                size = {size}
+                />
+                
             </div>
 
         </div>
