@@ -284,3 +284,5 @@ useEffect(() => {
 }
 
 export default VideoCarousel
+
+// highlights section complete
