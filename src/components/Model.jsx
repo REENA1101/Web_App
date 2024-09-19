@@ -2,6 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useState } from 'react';
 import { yellowImg } from '../utils';
+import { useRef } from 'react';
 
 export default function Model() {
     const [size, setSize] = useState('small')
@@ -12,6 +13,11 @@ export default function Model() {
     })
 
     // camera control for the model view
+    const cameraControlSmall = useRef();
+    const cameraControlLarge = useRef();
+
+    const small = useRef(new THREE.Group());
+
 
 
    useGSAP(()=>{
