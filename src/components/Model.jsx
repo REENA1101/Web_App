@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { useState } from 'react';
 import { yellowImg } from '../utils';
 import { useRef } from 'react';
+import * as THREE from 'three';
 
 export default function Model() {
     const [size, setSize] = useState('small')
