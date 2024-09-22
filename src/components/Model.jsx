@@ -8,6 +8,7 @@ import ModelView from './ModelView';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
 import { models } from '../constants';
+import { sizes } from '../constants';
 
 export default function Model() {
     const [size, setSize] = useState('small')
@@ -97,7 +98,7 @@ export default function Model() {
                     <button className='size-btn-container'>
                         {sizes.map(({label, value})=>(
                             <span key={label}>
-                                {}
+                                {label}
                             </span>
                         ))}
                     </button>
