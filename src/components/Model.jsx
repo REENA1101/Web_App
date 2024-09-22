@@ -29,7 +29,6 @@ export default function Model() {
     const [largeRotation, setLargeRotation] = useState(0);
 
 
-
    useGSAP(()=>{
     gsap.to('#heading', {y:0, opacity:1})
    }, []);
@@ -86,7 +85,13 @@ export default function Model() {
 
                 <div className='flex-center'>
                     <ul className='color-container'>
+                          {models.map((item, i)=>(
+                            <li key={i} className='w-6 h-6 rounded-full mx-2' style={{
+                                backgroundColor:item.color[0]}}
+                            onClick={()=>setModel(item)}/>
 
+                           
+                          ))}
                         
                     </ul>
                 </div>
