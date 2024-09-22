@@ -10,7 +10,7 @@ export default function ModelView({index, groupRef, gsapType, controlRef,setRota
     >
       <ambientLight intensity = {0.3}/>
 
-      <PerspectiveCamera/>
+      <PerspectiveCamera makeDefault  position = {[0,0,4]}/>
      </View>
     </div>
   )
