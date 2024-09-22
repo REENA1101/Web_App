@@ -7,10 +7,11 @@ import * as THREE from 'three';
 import ModelView from './ModelView';
 import { Canvas } from '@react-three/fiber';
 import { View } from '@react-three/drei';
+import { models } from '../constants';
 
 export default function Model() {
     const [size, setSize] = useState('small')
-    const [model, setmodel] = useState({
+    const [model, setModel] = useState({
         title: 'iPhone 15 Pro in natural Titanium',
         color: ['#8F8A81', '#FFE7B9', '6F6C64'],
         img:yellowImg,
@@ -89,11 +90,17 @@ export default function Model() {
                             <li key={i} className='w-6 h-6 rounded-full mx-2' style={{
                                 backgroundColor:item.color[0]}}
                             onClick={()=>setModel(item)}/>
-
-                           
                           ))}
                         
                     </ul>
+
+                    <button className='size-btn-container'>
+                        {sizes.map(({label, value})=>(
+                            <span key={label}>
+                                {}
+                            </span>
+                        ))}
+                    </button>
                 </div>
            </div>
           </div>
