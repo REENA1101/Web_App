@@ -1,6 +1,6 @@
-import { View } from "@react-three/drei"
+import { PerspectiveCamera, View } from "@react-three/drei"
 
-export default function ModelView({index, groupRef, gsapType, controlRef,setRotationSize, size, item  }) {
+export default function ModelView({index, groupRef, gsapType, controlRef,setRotationSize, size, item }) {
   return (
     <div>
       <View
@@ -9,6 +9,8 @@ export default function ModelView({index, groupRef, gsapType, controlRef,setRota
         className={`border-2 border-red-500 w-full h-full ${index===2} ? 'right-[-100%] :''`}
     >
       <ambientLight intensity = {0.3}/>
+
+      <PerspectiveCamera/>
      </View>
     </div>
   )
