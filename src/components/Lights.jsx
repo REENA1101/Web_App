@@ -2,6 +2,6 @@
 
 export default function Lights() {
   return (
-    <div>Lights</div>
+    <div>lightsOut</div>
   )
 }
