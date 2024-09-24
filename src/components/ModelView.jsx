@@ -18,9 +18,12 @@ export default function ModelView({index, groupRef, gsapType, controlRef,setRota
       <Lights/>
 
       <Suspense fallback={<div>Loading</div>}>
+      
 
       </Suspense>
      </View>
     </div>
   )
 }
+
+{/* <h1></h1> */}
