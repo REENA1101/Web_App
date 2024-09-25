@@ -27,3 +27,4 @@ export default function ModelView({index, groupRef, gsapType, controlRef,setRota
 }
 
 {/* <h1></h1> */}
+{/* <h1></h1> */}
